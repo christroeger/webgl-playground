@@ -1,0 +1,73 @@
+<html>
+<head>
+    <style>
+	* {
+		margin: 0;
+		padding 0;
+		color: #fff;
+		background-color:#000;
+	}
+	.box {
+		height: 100%;
+		float: left;
+	}
+	#errorBox pre {
+		color: #b00;
+		background-color:#dbdbdb;
+	}
+    </style>
+</head>
+<body>
+<div id="errorBox"></div>
+<div id="canvasBox" class="box"></div>
+<div id="console" class="box">
+    <pre>(R)eset, (M)ouselook</pre>
+    <div id="fpsBox"><pre>FPS: 0</pre></div>
+    <div id="statusBox"></div>
+</div>
+<script src="gl-matrix-min-2.2.1.js"></script>
+<script src="renderer.js"></script>
+<script>
+    var width = document.getElementsByTagName("body")[0].clientWidth * 0.5;
+    var height = document.getElementsByTagName("body")[0].clientHeight;
+    new Renderer({
+		name: "base",
+		width: width,
+		height: height,
+		backgroundColor: [0.1, 0.1, 0.1, 1.0],
+		canvasBox: "canvasBox",
+		statusBox: "statusBox",
+		fpsBox: "fpsBox",
+		errorBox: "errorBox",
+		camera: {
+			x: 0,
+			y: 0,
+			z: -10,
+			pitch: 0,
+			yaw: 0,
+			roll: 0,
+			fov: 60,
+			nearPlane: 0.1,
+			farPlane: 1000,
+			viewport : {
+				x: 0,
+				y: 0,
+				width: width,
+				height: height
+			}
+		},
+		movement: {
+			forward: "W",
+			backward: "S",
+			left: "A",
+			right: "D",
+			up: " ",
+			down: "\u0010",
+			mouseSensitivity : 0.2,
+			mouseWheelSensitivity: -0.5,
+			movementScale: 0.02
+		}
+	});
+</script>
+</body>
+</html>
